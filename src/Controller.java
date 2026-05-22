@@ -52,7 +52,7 @@ public class Controller {
         Coche coche = miModel.getCoche(matricula);
         if (coche != null){
             int v_actual = coche.velocidad;
-            miView.muestraVelocidad(coche.matricula, coche.velocidad);
+            miView.muestraVelocidad(coche.matricula, v_actual);
         }else{
             miView.mostrarMensaje("Error: Matricula" + matricula + " no encontrada");
         }
