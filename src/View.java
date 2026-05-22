@@ -40,16 +40,16 @@ public class View {
             switch (opcion){
                 case 1:
                     System.out.println("Cual es el modelo?: ");
-                    String modelo = new Scanner(System.in).next();
+                    String modelo = scanner.next();
                     System.out.println("Cual es la matricula?: ");
-                    String matricula = new Scanner(System.in).next();
+                    String matricula = scanner.next();
                     controlador.procesarCrearCoche(modelo, matricula);
 
                     break;
 
                 case 2:
                     System.out.println("Cual es la matricula?");
-                    String matricula_velocidad = new Scanner(System.in).next();
+                    String matricula_velocidad = scanner.next();
                     controlador.procesarMostrarVelocidad(matricula_velocidad);
                     break;
                 case 3:
