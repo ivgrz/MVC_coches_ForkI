@@ -1,10 +1,28 @@
 import java.lang.module.ModuleDescriptor;
 
 public class Controller {
+    private Model miModel;
+    private View miView;
+
+    public Controller(Model model, View view){
+        this.miModel = model;
+        this.miView = view;
+
+
+    }
+
     public static void main(String[] args) {
+
+
+
         // Instanciamos la vista y el modelo
         View miView = new View();
         Model miModel = new Model();
+
+
+        Controller controlador = new Controller(miModel,miView);
+        miView.setControlador(controlador);
+        miView.ArrancarMenu();
 
         // Crear tres coches
         miModel.crearCoche("LaFerrari", "SBC 1234");
@@ -24,4 +42,23 @@ public class Controller {
             System.out.println("Error");
         }
     }
+    public void procesarCrearCoche(String modelo, String matricula){
+        miModel.crearCoche(modelo, matricula);
+
+        miView.mostrarMensaje("Coche creado correctamente");
+
+    }
+    public void procesarMostrarVelocidad(String matricula){
+        Coche coche = miModel.getCoche(matricula);
+        if (coche != null){
+            int v_actual = coche.velocidad;
+            miView.muestraVelocidad(coche.matricula, coche.velocidad);
+        }else{
+            miView.mostrarMensaje("Error: Matricula" + matricula + " no encontrada");
+        }
+
+
+    }
+
+
 }

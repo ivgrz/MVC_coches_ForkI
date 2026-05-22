@@ -10,12 +10,22 @@ public class View {
      * @param v velocidad
      * @return true si se ha mostrado correctamente
      */
+    private Controller controlador;
+    private Scanner scanner = new Scanner(System.in);
+
+    public void setControlador(Controller control){
+        this.controlador = control;
+
+    }
+
+
+
     public boolean muestraVelocidad(String matricula, Integer v){
         System.out.println(matricula + ": " + v + " km/hr");
         return true;
     }
-
-    public static void main(String[] args) {
+// Menu de View
+    public void ArrancarMenu(){
         int opcion = 0;
         do {
 
@@ -29,32 +39,18 @@ public class View {
 
             switch (opcion){
                 case 1:
-                    System.out.println("Cual es la matricula del coche?: ");
-                    String matricula = new Scanner(System.in).next();
-                    System.out.println("Cual es el modelo? ");
+                    System.out.println("Cual es el modelo?: ");
                     String modelo = new Scanner(System.in).next();
-                    Model model = new Model();
-                    try{
+                    System.out.println("Cual es la matricula?: ");
+                    String matricula = new Scanner(System.in).next();
+                    controlador.procesarCrearCoche(modelo, matricula);
 
-                        model.crearCoche(modelo, matricula);
-                        System.out.println("Coche creado correctamente");
-                    }catch(Exception e){
-                        System.out.println("No se ha podido crear el coche " + e.getMessage());
-                    }
                     break;
+
                 case 2:
                     System.out.println("Cual es la matricula?");
                     String matricula_velocidad = new Scanner(System.in).next();
-                    System.out.println("Cual es la velocidad?: ");
-                    int velcidadm = new Scanner(System.in).nextInt();
-
-                    View miview = new View();
-                    try{
-                        miview.muestraVelocidad(matricula_velocidad, velcidadm);
-                        System.out.println("Mostrando...");
-                    }catch (NumberFormatException e){
-                        System.out.println("No se ha podido ver la velocidad " + e.getMessage());
-                    }
+                    controlador.procesarMostrarVelocidad(matricula_velocidad);
                     break;
                 case 3:
                     System.out.println("Saliendo...");
@@ -67,5 +63,21 @@ public class View {
 
         }while(opcion != 3);
 
+
+    }
+    public void mostrarMensaje(String mensaje){
+        System.out.println(mensaje);
+
+    }
+    public static void main(String[] args) {
+
+
+        View miView = new View();
+        Model miModel = new Model();
+
+
+        Controller controlador = new Controller(miModel, miView);
+        miView.setControlador(controlador);
+        miView.ArrancarMenu();
     }
 }
