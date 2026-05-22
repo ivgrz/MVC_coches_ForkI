@@ -20,10 +20,6 @@ public class Controller {
         Model miModel = new Model();
 
 
-        Controller controlador = new Controller(miModel,miView);
-        miView.setControlador(controlador);
-        miView.ArrancarMenu();
-
         // Crear tres coches
         miModel.crearCoche("LaFerrari", "SBC 1234");
         miModel.crearCoche("Alpine", "HYU 4567");
