@@ -1,5 +1,10 @@
 import java.lang.module.ModuleDescriptor;
 
+/**
+ * Clase encargada de manejar la logica del programa y conectar las clases Model y View
+ * @author Ivan Gutierrez
+ * @version 1.0
+ */
 public class Controller {
     private Model miModel;
     private View miView;

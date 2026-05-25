@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 /**
  * Clase encargada de la interacción con el usuario
+ * @author Ivan Gutierrez
+ * @version 1.0
  */
 public class View {
     /**

@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 /**
  * Clase encargada de manejar los datos
+ * @author Ivan Gutierrez
+ * @version 1.0
  */
 public class Model {
     static ArrayList<Coche> parking = new ArrayList<>();
