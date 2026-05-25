@@ -10,7 +10,7 @@ public class Controller {
 
 
     }
-
+/*
     public static void main(String[] args) {
 
 
@@ -38,17 +38,25 @@ public class Controller {
             System.out.println("Error");
         }
     }
-    public void procesarCrearCoche(String modelo, String matricula){
-        miModel.crearCoche(modelo, matricula);
+    */
 
-        miView.mostrarMensaje("Coche creado correctamente");
+    public void procesarCrearCoche(String modelo, String matricula){
+        Coche coche_e = miModel.crearCoche(modelo, matricula);
+
+        if (coche_e != null){
+
+            miView.mostrarMensaje("Error: La matricula " + matricula + "ya existe. ");
+        }else {
+            miModel.crearCoche(modelo, matricula);
+            miView.mostrarMensaje("Coche con matricula: " + matricula + " creado correctamente");
+        }
 
     }
     public void procesarMostrarVelocidad(String matricula){
-        Coche coche = miModel.getCoche(matricula);
-        if (coche != null){
-            int v_actual = coche.velocidad;
-            miView.muestraVelocidad(coche.matricula, v_actual);
+        Coche coche_e = miModel.getCoche(matricula);
+        if (coche_e != null){
+            int v_actual = coche_e.velocidad;
+            miView.muestraVelocidad(coche_e.matricula, v_actual);
         }else{
             miView.mostrarMensaje("Error: Matricula" + matricula + " no encontrada");
         }

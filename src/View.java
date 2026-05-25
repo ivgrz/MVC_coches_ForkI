@@ -10,11 +10,11 @@ public class View {
      * @param v velocidad
      * @return true si se ha mostrado correctamente
      */
-    private Controller controlador;
+    private Controller c;
     private Scanner scanner = new Scanner(System.in);
 
-    public void setControlador(Controller control){
-        this.controlador = control;
+    public void setController(Controller control){
+        this.c = control;
 
     }
 
@@ -25,7 +25,7 @@ public class View {
         return true;
     }
 // Menu de View
-    public void ArrancarMenu(){
+    public void MostrarMenu(){
         int opcion = 0;
         do {
 
@@ -43,14 +43,14 @@ public class View {
                     String modelo = scanner.next();
                     System.out.println("Cual es la matricula?: ");
                     String matricula = scanner.next();
-                    controlador.procesarCrearCoche(modelo, matricula);
+                    c.procesarCrearCoche(modelo, matricula);
 
                     break;
 
                 case 2:
                     System.out.println("Cual es la matricula?");
                     String matricula_velocidad = scanner.next();
-                    controlador.procesarMostrarVelocidad(matricula_velocidad);
+                    c.procesarMostrarVelocidad(matricula_velocidad);
                     break;
                 case 3:
                     System.out.println("Saliendo...");
@@ -77,7 +77,7 @@ public class View {
 
 
         Controller controlador = new Controller(miModel, miView);
-        miView.setControlador(controlador);
-        miView.ArrancarMenu();
+        miView.setController(controlador);
+        miView.MostrarMenu();
     }
 }
