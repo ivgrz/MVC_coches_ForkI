@@ -35,7 +35,8 @@ public class View {
             System.out.println("Que quieres realizar? ");
             System.out.println("1. Crear Coche");
             System.out.println("2. Mostrar velocidad");
-            System.out.println("3. Salir");
+            System.out.println("3. Avanzar");
+
 
             opcion = new Scanner(System.in).nextInt();
 
@@ -45,7 +46,7 @@ public class View {
                     String modelo = scanner.next();
                     System.out.println("Cual es la matricula?: ");
                     String matricula = scanner.next();
-                    c.procesarCrearCoche(modelo, matricula);
+                    c.procesarCrearCoche(modelo, matricula,0,0);
 
                     break;
 
@@ -55,15 +56,25 @@ public class View {
                     c.procesarMostrarVelocidad(matricula_velocidad);
                     break;
                 case 3:
-                    System.out.println("Saliendo...");
+                    System.out.println("Que coche debe avanzar? (introducir matricula): ");
+                    String matricula_avanzar = scanner.next();
+                    c.avanzar_coche(matricula_avanzar);
                     break;
+                case 4:
+                    System.out.println("Matricula: ");
+                    String matricula_repostar = scanner.next();
+                    System.out.println("Cantidad a repostar: ");
+                    int cant_l = scanner.nextInt();
+                    c.cargar_gasolina(matricula_repostar,cant_l);
+                case 5:
+                    System.out.println("Saliendo...");
                 default:
                     System.out.println("Opcion invalida");
 
             }
 
 
-        }while(opcion != 3);
+        }while(opcion != 5);
 
 
     }

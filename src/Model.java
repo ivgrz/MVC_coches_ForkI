@@ -8,14 +8,15 @@ import java.util.ArrayList;
 public class Model {
     static ArrayList<Coche> parking = new ArrayList<>();
 
+
     /**
      * Crea un coche y lo mete en el parking
      * @param modelo del coche
      * @param matricula identificador unico
      * @return el coche creado
      */
-    public Coche crearCoche(String modelo, String matricula){
-        Coche aux = new Coche(modelo, matricula);
+    public Coche crearCoche(String modelo, String matricula, int metros_recorridos, int litros_gasolina){
+        Coche aux = new Coche(modelo, matricula, metros_recorridos, litros_gasolina);
         parking.add(aux);
         return aux;
     }

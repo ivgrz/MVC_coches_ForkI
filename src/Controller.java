@@ -9,6 +9,7 @@ public class Controller {
     private Model miModel;
     private View miView;
 
+
     public Controller(Model model, View view){
         this.miModel = model;
         this.miView = view;
@@ -45,14 +46,14 @@ public class Controller {
     }
     */
 
-    public void procesarCrearCoche(String modelo, String matricula){
-        Coche coche_e = miModel.crearCoche(modelo, matricula);
+    public void procesarCrearCoche(String modelo, String matricula, int metros_recorridos, int litros){
+        Coche coche_e = miModel.crearCoche(modelo, matricula, metros_recorridos, litros);
 
         if (coche_e != null){
 
             miView.mostrarMensaje("Error: La matricula " + matricula + "ya existe. ");
         }else {
-            miModel.crearCoche(modelo, matricula);
+            miModel.crearCoche(modelo, matricula,metros_recorridos,litros);
             miView.mostrarMensaje("Coche con matricula: " + matricula + " creado correctamente");
         }
 
@@ -66,6 +67,32 @@ public class Controller {
             miView.mostrarMensaje("Error: Matricula" + matricula + " no encontrada");
         }
 
+
+    }
+    public void avanzar_coche(String matricula){
+        Coche coche_a = miModel.getCoche(matricula);
+
+        if (coche_a != null){
+            int metros_r = coche_a.metros_recorridos += 5;
+            int lg = coche_a.litros_gasolina -= 10;
+            miView.mostrarMensaje("Avanzando..." + "distancia recorrida: " + metros_r + "litros de gasolina: " + lg);
+            if (lg < 5){
+                System.out.println("Gasolina insuficiente, repostar si quiere continuar");
+            }
+        } else {
+            miView.mostrarMensaje("Error: Matricula " + matricula + " no encontrada...");
+        }
+    }
+
+    public void cargar_gasolina(String matricula, int litros_n){
+        Coche c = miModel.getCoche(matricula);
+        if (litros_n > 0){
+            c.litros_gasolina += litros_n;
+            miView.mostrarMensaje("Coche con matricula" + matricula + "repuesto correctamente");
+
+        }else {
+            miView.mostrarMensaje("Error: Coche con matricula: " + matricula + " no encontrado....");
+        }
 
     }
 
