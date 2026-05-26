@@ -51,7 +51,7 @@ public class Controller {
     */
 
     /**
-     * Metodo que permite la creacion de objetos tipo Coche
+     * Metodo  de tipo VOID que permite la creacion de objetos tipo Coche
      * @param modelo: String
      * @param matricula: String
      * @param metros_recorridos: int
@@ -71,7 +71,7 @@ public class Controller {
     }
 
     /**
-     * Metodo que permite mostrar la velocidad inicial del coche
+     * Metodo de tipo VOID que permite mostrar la velocidad inicial del coche
      * @param matricula: String
      */
     public void procesarMostrarVelocidad(String matricula){
@@ -85,6 +85,11 @@ public class Controller {
 
 
     }
+
+    /**
+     * Metodo de tipo VOID que permite al coche avanzar dada la matricula por parametro
+     * @param matricula: String
+     */
     public void avanzar_coche(String matricula){
         Coche coche_a = miModel.getCoche(matricula);
 
@@ -101,6 +106,11 @@ public class Controller {
         }
     }
 
+    /**
+     * Metodo de tipo VOID que permite cargar gasolina al coche dada la matricula y la cantidad a cargar por parametro
+     * @param matricula: String
+     * @param litros_n: Integer
+     */
     public void cargar_gasolina(String matricula, int litros_n){
         Coche c = miModel.getCoche(matricula);
         if (litros_n > 0){
