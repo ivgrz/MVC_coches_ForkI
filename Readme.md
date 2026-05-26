@@ -69,3 +69,10 @@ sequenceDiagram
     View-->>Controller: boolean
     deactivate View
 ```
+
+
+## Javadoc clase Controller
+
+![img.png](img/img.png)
+![img.png](img/img2.png)
+![img3.png](img/img3.png)
