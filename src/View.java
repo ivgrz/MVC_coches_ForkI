@@ -7,28 +7,39 @@ import java.util.Scanner;
  */
 public class View {
     /**
-     * Muestra la velocidad de un coche
-     * @param matricula del coche
-     * @param v velocidad
-     * @return true si se ha mostrado correctamente
+     * Propiedades de la clase View
      */
     private Controller c;
     private Scanner scanner = new Scanner(System.in);
 
+    /**
+     * Setter de controller
+     * @param control: void
+     */
     public void setController(Controller control){
         this.c = control;
 
     }
 
 
-
+    /**
+     * Metodo que muestra la velocidad
+     * @param matricula: String
+     * @param v: integer
+     * @return boolean
+     */
     public boolean muestraVelocidad(String matricula, Integer v){
         System.out.println(matricula + ": " + v + " km/hr");
         return true;
     }
 // Menu de View
+
+    /**
+     * Metodo que permite la interaccion del programa con el usuario
+     * Sin parametros (void)
+     */
     public void MostrarMenu(){
-        int opcion = 0;
+        int opcion;
         do {
 
             System.out.println("===== COCHES =====");
@@ -78,10 +89,20 @@ public class View {
 
 
     }
+
+    /**
+     * Metodo que permite al Controller mostrar mensajes a usuarios sin recurrir a un print
+     * @param mensaje: String
+     */
     public void mostrarMensaje(String mensaje){
         System.out.println(mensaje);
 
     }
+
+    /**
+     * Metodo "main" que permite la compilacion del programa
+     * @param args: String[]
+     */
     public static void main(String[] args) {
 
 

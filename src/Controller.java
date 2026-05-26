@@ -9,7 +9,11 @@ public class Controller {
     private Model miModel;
     private View miView;
 
-
+    /**
+     * Constructor de la clase Controller
+     * @param model: Model
+     * @param view: View
+     */
     public Controller(Model model, View view){
         this.miModel = model;
         this.miView = view;
@@ -46,6 +50,13 @@ public class Controller {
     }
     */
 
+    /**
+     * Metodo que permite la creacion de objetos tipo Coche
+     * @param modelo: String
+     * @param matricula: String
+     * @param metros_recorridos: int
+     * @param litros: int
+     */
     public void procesarCrearCoche(String modelo, String matricula, int metros_recorridos, int litros){
         Coche coche_e = miModel.crearCoche(modelo, matricula, metros_recorridos, litros);
 
@@ -58,6 +69,11 @@ public class Controller {
         }
 
     }
+
+    /**
+     * Metodo que permite mostrar la velocidad inicial del coche
+     * @param matricula: String
+     */
     public void procesarMostrarVelocidad(String matricula){
         Coche coche_e = miModel.getCoche(matricula);
         if (coche_e != null){
@@ -74,8 +90,9 @@ public class Controller {
 
         if (coche_a != null){
             int metros_r = coche_a.metros_recorridos += 5;
+            procesarMostrarVelocidad(matricula);
             int lg = coche_a.litros_gasolina -= 10;
-            miView.mostrarMensaje("Avanzando..." + "distancia recorrida: " + metros_r + "litros de gasolina: " + lg);
+            miView.mostrarMensaje("Avanzando..." + "distancia recorrida: " + metros_r + ", litros de gasolina: " + lg);
             if (lg < 5){
                 System.out.println("Gasolina insuficiente, repostar si quiere continuar");
             }
